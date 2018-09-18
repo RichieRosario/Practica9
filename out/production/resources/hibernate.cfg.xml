@@ -10,7 +10,7 @@
 
         <property name="hibernate.connection.driver_class">org.h2.Driver</property>
 
-        <property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/parcial2</property>
+        <property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/practica9</property>
 
         <property name="hibernate.connection.username">sa</property>
 
@@ -36,31 +36,9 @@
 
 
 
-        <mapping class="modelo.Friendship"/>
+        <mapping class="modelo.Encuesta"/>
 
-        <mapping class="modelo.LikeDislike"/>
 
-        <mapping class="modelo.Notification"/>
-		
-		<mapping class="modelo.Photo"/>
-		
-		<mapping class="modelo.Post"/>
-
-	    <mapping class="modelo.Profile"/>
-
-		<mapping class="modelo.Tag"/>
-		
-		<mapping class="modelo.Timeline"/>
-
-		<mapping class="modelo.User"/>
-
-        <mapping class="modelo.Album"/>
-
-        <mapping class="modelo.Comment"/>
-
-        <mapping class="modelo.Event"/>
-
-        <mapping class="modelo.Wall"/>
 
 
 

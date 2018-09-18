@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class DBService {
 
     private static DBService instancia;
-    private String URL = "jdbc:h2:tcp://localhost/~/parcial2";
+    private String URL = "jdbc:h2:tcp://localhost/~/practica9";
 
     private  DBService(){
         registrarDriver();
