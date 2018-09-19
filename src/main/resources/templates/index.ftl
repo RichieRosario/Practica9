@@ -5,7 +5,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> </head>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('#almacenar').click(function(){
+                    var nombre = document.getElementById("nombre").value;
+                    var sector = document.getElementById("sector").value;
+
+                    localStorage.setItem("Nombre", nombre);
+                    localStorage.setItem("Sector", sector);
+
+                    document.getElementById("nombre").value = "";
+                    document.getElementById("sector").value = "";
+                });
+            });
+        </script>
+ </head>
     <body>
 
 
@@ -52,7 +68,7 @@
 
 
 
-                    <button type="submit" class="btn btn-info btn-xs">Almacenar</button>
+                    <button id="almacenar" type="submit" class="btn btn-info btn-xs">Almacenar</button>
 
 
                 </form>
