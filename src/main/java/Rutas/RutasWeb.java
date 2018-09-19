@@ -57,6 +57,43 @@ public class RutasWeb {
             return new ModelAndView(attributes, "index.ftl");
         }, freeMarkerEngine);
 
+
+        post("/modificar/:id", (request, response) -> {
+
+            Map<String, Object> attributes = new HashMap<>();
+            int id = Integer.parseInt(request.params("id"));
+            String nombre = request.queryParams("nombre");
+            String sector = request.queryParams("sector");
+            String nivel = request.queryParams("nivel");
+            String latitud = request.queryParams("latitud");
+            String longitud = request.queryParams("longitud");
+
+            Encuesta e = EncuestaDao.findOne(id);
+            e.setNombre(nombre);
+            e.setSector(sector);
+            e.setNivel(nivel);
+            e.setLatitud(latitud);
+            e.setLongitud(longitud);
+            EncuestaDao.update(e);
+
+            response.redirect("/");
+
+            return new ModelAndView(attributes, "index.ftl");
+        }, freeMarkerEngine);
+
+
+        post("/eliminar/:id", (request, response) -> {
+
+            Map<String, Object> attributes = new HashMap<>();
+            int id = Integer.parseInt(request.params("id"));
+            Encuesta e = EncuestaDao.findOne(id);
+            EncuestaDao.deleteById(e);
+
+            response.redirect("/");
+
+            return new ModelAndView(attributes, "index.ftl");
+        }, freeMarkerEngine);
+
     }
 
 }

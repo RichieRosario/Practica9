@@ -2,7 +2,7 @@
 <#include "layout.ftl">
 <style>
     #out {
-        height: 0%;
+        height: 50%;
     }
     html, body {
         height: 100%;
@@ -61,8 +61,8 @@
     var map, infoWindow;
     function initMap() {
         map = new google.maps.Map(document.getElementById('out'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 17
+            center: {la: -34.397, lng: 150.644},
+            zoom: 7
         });
         infoWindow = new google.maps.InfoWindow;
 
@@ -77,10 +77,10 @@
                 $('input[name=longitud]').val(position.coords.longitude);
 
                 console.log($('input[name=longitud]').val())
-
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Usted se encuentra aqui.');
-                infoWindow.open(map);
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map
+                });
                 map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
