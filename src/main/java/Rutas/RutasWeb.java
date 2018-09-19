@@ -35,7 +35,7 @@ public class RutasWeb {
             return new ModelAndView(attributes, "index.ftl");
         }, freeMarkerEngine);
 
-        post("/registrar", (request, response) -> {
+        post("/registrarse", (request, response) -> {
 
             Map<String, Object> attributes = new HashMap<>();
             String nombre = request.queryParams("nombre");

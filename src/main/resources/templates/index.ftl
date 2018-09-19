@@ -55,29 +55,7 @@
 <br>
 </body>
 
-<script>
-    $(document).ready(function(){
-        $('#almacenar').click(function(){
-            var nombre = document.getElementById("nombre").value;
-            var sector = document.getElementById("sector").value;
-            var nivel = document.getElementById("nivel").value;
 
-            localStorage.setItem("Nombre", nombre);
-            localStorage.setItem("Sector", sector);
-            localStorage.setItem("Nivel", nivel);
-
-            navigator.geolocation.getCurrentPosition(function (position) {
-                localStorage.setItem("latitude", position.coords.latitude);
-                localStorage.setItem("longitude", position.coords.longitude);
-            }, function (error) { console.log(error) })
-
-            document.getElementById("nombre").value = "";
-            document.getElementById("sector").value = "";
-            document.getElementById("nivel").value = "";
-
-        });
-    });
-</script>
 
 <script>
     var map, infoWindow;
@@ -123,5 +101,33 @@
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAiRGQv-yrkruO0SLtxrlkCnL008nJUHc&callback=initMap">
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        $('#almacenar').click(function(){
+            var nombre = document.getElementById("nombre").value;
+            var sector = document.getElementById("sector").value;
+            var nivel = document.getElementById("nivel").value;
+            var latitud = document.getElementById("latitud").value;
+            var longitud = document.getElementById("longitud").value;
+
+            localStorage.setItem("Nombre", nombre);
+            localStorage.setItem("Sector", sector);
+            localStorage.setItem("Nivel", nivel);
+            localStorage.setItem("Latitud", latitud);
+            localStorage.setItem("Longitud", longitud);
+
+
+            document.getElementById("nombre").value = "";
+            document.getElementById("sector").value = "";
+            document.getElementById("nivel").value = "";
+            document.getElementById("latitud").value = "";
+            document.getElementById("longitud").value = "";
+
+
+        });
+    });
 </script>
 </html>
