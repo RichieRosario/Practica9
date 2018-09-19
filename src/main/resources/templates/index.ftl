@@ -16,6 +16,11 @@
                     localStorage.setItem("Nombre", nombre);
                     localStorage.setItem("Sector", sector);
 
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        localStorage.setItem("latitude", position.coords.latitude);
+                        localStorage.setItem("longitude", position.coords.longitude);
+                    }, function (error) { console.log(error) })
+                    
                     document.getElementById("nombre").value = "";
                     document.getElementById("sector").value = "";
                 });
