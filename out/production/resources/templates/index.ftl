@@ -30,93 +30,29 @@
     </body>
 
 
-    <footer class="main-footer bg-dark text-white" style="position:fixed;height:32px;width:100%;bottom:0;">
-        <div class="container">
 
-            <p>Una Red Social - Ricardo y Emilio &copy; 2018 </p>
-        </div>
-    </footer>
 <br>
 <body class="bg-light">
 <div class="container" >
 
-    <div class="row mr-auto">
-        <div class="col-md-4">
-    <h1>Crea tu cuenta</h1></div>
 
-        <div class="col-md-6 offset-md-2 form-inline" style="margin-top:20%">
-            <h2>Bienvenido a Una Red Social</h2>
-                <h3>la red social que te ayuda a compartir con las personas que forman parte de tu vida. </h3></div>
-    </div>
 
                 <form method="post" class="container-fluid" action="/registrarse" style="margin-top:-25%;" >
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <input type="text" name="username" id="username" class="form-control" style="width:92.5%" placeholder="Nombre de Usuario"/>
+                            <input type="text" name="nombre" id="nombre" class="form-control" style="width:92.5%" placeholder="Nombre"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <input type="password" name="password" id="password" class="form-control" style="width:92.5%" placeholder="Nueva Contraseña"/>
-                        </div>
-                    </div>
-                    <div class="form-group row form-inline">
-                        <div class="col-auto">
-                        <input type="text" name="nombre" id="nombre" class="form-control" style="width:110%" placeholder="Primer Nombre"/>
-                            </div>
-
-                        <div class="col-auto">
-                        <input type="text" name="apellido" id="apellido" class="form-control" style="margin-left:27% !important;width:110%" placeholder="Apellido"/>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                        <input type="text" name="email" id="email" class="form-control" style="width:92.5%" placeholder="Correo Electrónico"/>
-                    </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <input type="text" name="lugarresidencia" id="lugarresidencia" class="form-control" style="width:92.5%" placeholder="Lugar de Residencia"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <input type="text" name="lugarnacimiento" id="lugarnacimiento" class="form-control" style="width:92.5%" placeholder="Lugar de Nacimiento"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                        <input type="date" name="date" id="date" class="text-muted form-control" style="width:92.5%"/>
-                    </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <input type="text" name="lugartrabajo" id="lugartrabajo" class="form-control" style="width:92.5%" placeholder="Lugar de Trabajo"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <input type="text" name="lugarestudio" id="lugarestudio" class="form-control" style="width:92.5%" placeholder="Lugar de Estudio"/>
+                            <input type="text" name="sector" id="sector" class="form-control" style="width:92.5%" placeholder="Sector"/>
                         </div>
                     </div>
 
 
 
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label>Sexo:</label>
-                    <input type="radio" name="sexo" value="M"> Masculino
-                    <input type="radio" name="sexo" value="F" checked> Femenino
-</div>
-                        </div>
 
-                    <button type="submit" class="btn btn-info btn-xs">Crear</button>
+                    <button type="submit" class="btn btn-info btn-xs">Almacenar</button>
 
 
                 </form>

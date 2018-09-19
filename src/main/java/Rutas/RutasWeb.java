@@ -28,6 +28,26 @@ import static spark.Spark.get;
 public class RutasWeb {
     public RutasWeb(final FreeMarkerEngine freeMarkerEngine) {
 
+       EncuestaDaoImpl EncuestaDao = new EncuestaDaoImpl(Encuesta.class);
+        post("/registrar", (request, response) -> {
+
+            Map<String, Object> attributes = new HashMap<>();
+            String nombre = request.queryParams("nombre");
+            String sector = request.queryParams("sector");
+            String nivel = request.queryParams("nivel");
+            String latitud = request.queryParams("latitud");
+            String longitud = request.queryParams("longitud");
+
+            Encuesta e = new Encuesta();
+            e.setNombre(nombre);
+            e.setSector(sector);
+            e.setNivel(nivel);
+            EncuestaDao.add(e);
+
+            response.redirect("/");
+
+            return new ModelAndView(attributes, "index.ftl");
+        }, freeMarkerEngine);
 
     }
 

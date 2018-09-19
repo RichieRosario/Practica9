@@ -16,40 +16,14 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" style="color:white">2do Parcial</a>
+                <a class="navbar-brand" style="color:white">Práctica #9</a>
             </div>
-            <#if admin == false>
             <ul class="nav navbar-nav" style="text-decoration:none">
-                <li class="navbar-item mt-1"><a href="/notifications" class="nav-link fa fa-bell" ></a>
-               <#if unseen <= 0>
-                 <span class="badge badge-secondary">${unseen}</span>
-               <#else>
-                   <span class="badge badge-danger">${unseen}</span>
-               </#if>
-            </li>
                 <li class="navbar-item"><a href="/" class="nav-link"  >Inicio</a></li>
                 <li class="navbar-item"><a href="/friends" class="nav-link">Amigos</a></li>
                 <li class="navbar-item"><a href="/profile/${usuario.getUsername()}" class="nav-link"  >Perfil</a></li>
                 <li class="navbar-item"><a href="/logout" class="nav-link">Cerrar Sesión</a></li>
             </ul>
-            <#else>
-
-                <ul class="nav navbar-nav" style="text-decoration:none">
-                    <li class="navbar-item mt-1"><a href="/notifications" class="nav-link fa fa-bell"  ></a>
-              <#if unseen <= 0>
-                 <span class="badge badge-secondary">${unseen}</span>
-              <#else>
-                   <span class="badge badge-danger">${unseen}</span>
-              </#if>
-                    </li>
-                <li class="navbar-item"><a href="/" class="nav-link" >Inicio</a></li>
-                    <li class="navbar-item"><a href="/friends" class="nav-link">Amigos</a></li>
-                <li class="navbar-item"><a href="/profile/${usuario.getUsername()}" class="nav-link" >Perfil</a></li>
-                    <li class="navbar-item"><a href="/usuarios" class="nav-link" >Gestionar Usuarios</a></li>
-                <li class="navbar-item"><a href="/logout" class="nav-link">Cerrar Sesión</a></li>
-            </ul>
-
-            </#if>
 
         </div>
     </nav>
