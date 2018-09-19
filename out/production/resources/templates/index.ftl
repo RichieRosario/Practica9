@@ -46,7 +46,7 @@
                     <input type="hidden" id="longitud" name="longitud"/>
 
 
-                    <button id="almacenar" type="submit" class="btn btn-info btn-xs">Almacenar</button>
+                    <button id="almacenar" type="button" class="btn btn-info btn-xs">Almacenar</button>
 
 
                 </form>
@@ -76,7 +76,6 @@
                 $('input[name=latitud]').val(position.coords.latitude);
                 $('input[name=longitud]').val(position.coords.longitude);
 
-                console.log($('input[name=longitud]').val())
 
                 infoWindow.setPosition(pos);
                 infoWindow.setContent('Usted se encuentra aqui.');
@@ -141,8 +140,30 @@
             document.getElementById("latitud").value = "";
             document.getElementById("longitud").value = "";
 
+            sincronizarConServidor();
 
         });
     });
+
+    function sincronizarConServidor() {
+
+        var encuestas = JSON.parse(localStorage.getItem("encuestas"));
+        encuestas = JSON.stringify(encuestas);
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                encuestas: encuestas
+            },
+            url: '/registrarse',
+            success: function (data) {
+
+            },
+            error: function () {
+                console.log("Error");
+            }
+        });
+    }
 </script>
 </html>

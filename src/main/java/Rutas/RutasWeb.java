@@ -1,6 +1,7 @@
 package Rutas;
 
 import dao.*;
+import jdk.nashorn.internal.parser.JSONParser;
 import modelo.*;
 import spark.template.freemarker.FreeMarkerEngine;
 import spark.ModelAndView;
@@ -37,26 +38,11 @@ public class RutasWeb {
 
         post("/registrarse", (request, response) -> {
 
-            Map<String, Object> attributes = new HashMap<>();
-            String nombre = request.queryParams("nombre");
-            String sector = request.queryParams("sector");
-            String nivel = request.queryParams("nivel");
-            String latitud = request.queryParams("latitud");
-            String longitud = request.queryParams("longitud");
+           Object object = request.queryParams("encuestas");
+            System.out.println(object.toString());
 
-            Encuesta e = new Encuesta();
-            e.setNombre(nombre);
-            e.setSector(sector);
-            e.setNivel(nivel);
-            e.setLatitud(latitud);
-            e.setLongitud(longitud);
-            EncuestaDao.add(e);
-
-            response.redirect("/");
-
-            return new ModelAndView(attributes, "index.ftl");
-        }, freeMarkerEngine);
+            return null;
+        });
 
     }
-
 }
