@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Una Red Social</title>
+        <title>Práctica #9</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -20,9 +20,8 @@
             </div>
             <ul class="nav navbar-nav" style="text-decoration:none">
                 <li class="navbar-item"><a href="/" class="nav-link"  >Inicio</a></li>
-                <li class="navbar-item"><a href="/friends" class="nav-link">Amigos</a></li>
-                <li class="navbar-item"><a href="/profile/${usuario.getUsername()}" class="nav-link"  >Perfil</a></li>
-                <li class="navbar-item"><a href="/logout" class="nav-link">Cerrar Sesión</a></li>
+                <li class="navbar-item"><a href="/listado" class="nav-link">Listar</a></li>
+
             </ul>
 
         </div>
@@ -32,7 +31,7 @@
 
     <footer class="main-footer bg-dark text-white" style="position:fixed;height:32px;width:100%;bottom:0;z-index:9;">
 
-            <p>Una Red Social - Ricardo y Emilio &copy; 2018 </p>
+            <p>Práctica #9 - Ricardo y Emilio &copy; 2018 </p>
 
     </footer>
 </html>
