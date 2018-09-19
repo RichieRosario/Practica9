@@ -29,26 +29,9 @@ public class Encuesta implements Serializable {
     @Column(name = "latitud")
     private String latitud;
 
-    public String getLatitud() {
-        return latitud;
-    }
-
-    public void setLatitud(String latitud) {
-        this.latitud = latitud;
-    }
-
-    public String getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(String longitud) {
-        this.longitud = longitud;
-    }
 
     @Column(name = "longitud")
     private String longitud;
-
-
 
 
     private boolean deleted = false;
@@ -91,5 +74,22 @@ public class Encuesta implements Serializable {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
     }
 }
