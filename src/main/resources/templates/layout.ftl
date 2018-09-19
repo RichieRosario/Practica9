@@ -10,9 +10,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script></head>
-    <body>
-
-
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -26,8 +23,6 @@
 
         </div>
     </nav>
-    </body>
-
 
     <footer class="main-footer bg-dark text-white" style="position:fixed;height:32px;width:100%;bottom:0;z-index:9;">
 

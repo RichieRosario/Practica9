@@ -29,6 +29,12 @@ public class RutasWeb {
     public RutasWeb(final FreeMarkerEngine freeMarkerEngine) {
 
        EncuestaDaoImpl EncuestaDao = new EncuestaDaoImpl(Encuesta.class);
+        get("/", (request, response) -> {
+
+            Map<String, Object> attributes = new HashMap<>();
+            return new ModelAndView(attributes, "index.ftl");
+        }, freeMarkerEngine);
+
         post("/registrar", (request, response) -> {
 
             Map<String, Object> attributes = new HashMap<>();
@@ -42,6 +48,8 @@ public class RutasWeb {
             e.setNombre(nombre);
             e.setSector(sector);
             e.setNivel(nivel);
+            e.setLatitud(latitud);
+            e.setLongitud(longitud);
             EncuestaDao.add(e);
 
             response.redirect("/");

@@ -1,35 +1,5 @@
 <html>
- <head>
-        <title>Una Red Social</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> </head>
-    <body>
-
-
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" style="color:white">2do Parcial</a>
-            </div>
-
-            <ul class="nav navbar-nav " style="text-decoration:none">
-                <form method="post"  action="/login"">
-                <div class="form-inline">
-                <li ><input type="text" name="userpost" id="userpost" class="form-control" style="width:92.5%" placeholder="Nombre de Usuario"/></li>
-                <li><input type="password" name="passpost" id="passpost" class="form-control" style="width:92.5%" placeholder="Contraseña"/></li>
-                    <button type="submit" class="btn btn-info btn-xs">Iniciar Sesión</button>
-
-                </div>
-                   </form>
-            </ul>
-        </div>
-    </nav>
-    </body>
-
-
+<#include "layout.ftl">
 
 <br>
 <body class="bg-light">
@@ -37,7 +7,7 @@
 
 
 
-                <form method="post" class="container-fluid" action="/registrarse" style="margin-top:-25%;" >
+                <form method="post" class="container-fluid" action="/registrarse"  >
                     <div class="form-group row">
                         <div class="col-md-6">
                             <input type="text" name="nombre" id="nombre" class="form-control" style="width:92.5%" placeholder="Nombre"/>
@@ -49,10 +19,22 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <select name="nivel" id="nivel" class="form-control" style="width:92.5%" placeholder="Nivel escolar">
+                            <option value="Basico">Básico</option>
+                            <option value="Medio">Medio</option>
+                            <option value="Grado Universitario">Grado Universitario</option>
+                            <option value="Postgrado">Postgrado</option>
+                                <option value="Doctorado">Doctorado</option>
+                            </select>
+                        </div>
+                    </div>
 
 
 
-                    <button type="submit" class="btn btn-info btn-xs">Almacenar</button>
+
+                    <button id="almacenar" type="submit" class="btn btn-info btn-xs">Almacenar</button>
 
 
                 </form>
@@ -60,4 +42,29 @@
 </div>
 <br>
 </body>
+
+<script>
+    $(document).ready(function(){
+        $('#almacenar').click(function(){
+            var nombre = document.getElementById("nombre").value;
+            var sector = document.getElementById("sector").value;
+            var nivel = document.getElementById("nivel").value;
+
+            localStorage.setItem("Nombre", nombre);
+            localStorage.setItem("Sector", sector);
+            localStorage.setItem("Nivel", nivel);
+
+            navigator.geolocation.getCurrentPosition(function (position) {
+                localStorage.setItem("latitude", position.coords.latitude);
+                localStorage.setItem("longitude", position.coords.longitude);
+            }, function (error) { console.log(error) })
+
+            document.getElementById("nombre").value = "";
+            document.getElementById("sector").value = "";
+            document.getElementById("nivel").value = "";
+
+        });
+    });
+</script>
+
 </html>
