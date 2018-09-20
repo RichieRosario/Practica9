@@ -16,6 +16,44 @@
 
 
 
+    <form method="post" class="container-fluid"  >
+        <input type="hidden" id="id" name="id">
+        <div class="form-group row">
+            <div class="col-md-6">
+                <input type="text" name="nombre" id="nombre" class="form-control" style="width:92.5%" placeholder="Nombre"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <input type="text" name="sector" id="sector" class="form-control" style="width:92.5%" placeholder="Sector"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                <select name="nivel" id="nivel" class="form-control" style="width:92.5%" placeholder="Nivel escolar">
+                    <option value="Basico">Básico</option>
+                    <option value="Medio">Medio</option>
+                    <option value="Grado Universitario">Grado Universitario</option>
+                    <option value="Postgrado">Postgrado</option>
+                    <option value="Doctorado">Doctorado</option>
+                </select>
+            </div>
+        </div>
+
+
+
+
+
+        <button id="modificar" onclick="modificar2()" type="button" class="btn btn-info btn-xs">Guardar Cambios</button>
+        <input type="hidden" id="latitud" name="latitud"/>
+        <input type="hidden" id="longitud" name="longitud"/>
+
+
+    </form>
+
+    <br>
+
     <div class="table-responsive table-bordered ">
 
 
@@ -40,8 +78,7 @@
 
 
 
-    <input type="hidden" id="latitud" name="latitud"/>
-    <input type="hidden" id="longitud" name="longitud"/>
+
 
 </div>
 
@@ -104,7 +141,7 @@
             var id;
             console.log(id);
             var markup ="<tr><td>"+encuestasalmacenadas[i].id +
-                    "</td><td>"+encuestasalmacenadas[i].nombre+"</td><td>"+ encuestasalmacenadas[i].sector + "</td><td>"+encuestasalmacenadas[i].nivel + "</td><td><div class=\"btn-group\" role=\"group\"><button type=\"button\" class=\"btn btn-info btn-xs\">Modificar</button><button type=\"button\" onclick=\"eliminar("+encuestasalmacenadas[i].id+")\" class=\"btn btn-danger btn-xs\">Eliminar</button></div></td></tr>";
+                    "</td><td>"+encuestasalmacenadas[i].nombre+"</td><td>"+ encuestasalmacenadas[i].sector + "</td><td>"+encuestasalmacenadas[i].nivel + "</td><td><div class=\"btn-group\" role=\"group\"><button type=\"button\" onclick=\"modificar("+encuestasalmacenadas[i].id+")\" class=\"btn btn-info btn-xs\">Modificar</button><button type=\"button\" onclick=\"eliminar("+encuestasalmacenadas[i].id+")\" class=\"btn btn-danger btn-xs\">Eliminar</button></div></td></tr>";
 
 
             $("#datoslocal tbody").append(markup);
@@ -114,7 +151,6 @@
 
     function eliminar(ideliminar){
 
-        console.log(ideliminar);
 
         var encuestatemp = {
             id: Number,
@@ -148,11 +184,85 @@
     }
 
 
+    function modificar(idmodificar){
+
+        var encuestasalmacenadas = JSON.parse(localStorage.getItem("encuestas"));
+
+
+        for(var i = 0; i < encuestasalmacenadas.length; i++){
+
+            if(encuestasalmacenadas[i].id == idmodificar){
+                document.getElementById("id").value = idmodificar;
+                document.getElementById("nombre").value = encuestasalmacenadas[i].nombre;
+                document.getElementById("sector").value = encuestasalmacenadas[i].sector;
+                document.getElementById("nivel").value = encuestasalmacenadas[i].nivel;
+                document.getElementById("latitud").value = encuestasalmacenadas[i].latitud;
+                document.getElementById("longitud").value = encuestasalmacenadas[i].longitud;
+
+            }
+        }
+    }
+
+        function modificar2(){
+
+
+            var encuestasalmacenadas = JSON.parse(localStorage.getItem('encuestas')) || [];
+
+            var encuesta = {
+                id: Number,
+                nombre: String,
+                sector: String,
+                nivel: String,
+                latitud: String,
+                longitud: String
+            };
+            var id = document.getElementById("id").value;
+            var nombre = document.getElementById("nombre").value;
+            var sector = document.getElementById("sector").value;
+            var nivel = document.getElementById("nivel").value;
+            var latitud = document.getElementById("latitud").value;
+            var longitud = document.getElementById("longitud").value;
+
+            encuesta.id = id;
+            encuesta.nombre = nombre;
+            encuesta.sector = sector;
+            encuesta.nivel = nivel;
+            encuesta.latitud = latitud;
+            encuesta.longitud = longitud;
+
+            for(var i = 0; i < encuestasalmacenadas.length; i++){
+
+                if(encuestasalmacenadas[i].id == encuesta.id){
+                    encuestasalmacenadas[i].id = encuesta.id;
+                    encuestasalmacenadas[i].nombre = encuesta.nombre;
+                    encuestasalmacenadas[i].sector = encuesta.sector;
+                    encuestasalmacenadas[i].nivel = encuesta.nivel;
+                    encuestasalmacenadas[i].latitud = encuesta.latitud;
+                    encuestasalmacenadas[i].longitud = encuesta.longitud;
+                   }
+            }
+
+
+
+
+            document.getElementById("nombre").value = "";
+            document.getElementById("sector").value = "";
+            document.getElementById("nivel").value = "Básico";
+            document.getElementById("latitud").value = "";
+            document.getElementById("longitud").value = "";
+
+            localStorage.setItem("encuestas", JSON.stringify(encuestasalmacenadas));
+            location.reload();
+
+
+        }
+
 
     function sincronizarConServidor() {
 
         var encuestas = JSON.parse(localStorage.getItem("encuestas"));
         encuestas = JSON.stringify(encuestas);
+
 
         $.ajax({
             type: 'POST',
@@ -162,13 +272,13 @@
             },
             url: '/registrarse',
             success: function (data) {
-
-            },
+                    },
             error: function () {
                 console.log("Error");
             }
         });
     }
+
     $(function() {
         cargar();
     });

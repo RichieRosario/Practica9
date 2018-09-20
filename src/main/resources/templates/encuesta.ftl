@@ -140,7 +140,7 @@
 
             document.getElementById("nombre").value = "";
             document.getElementById("sector").value = "";
-            document.getElementById("nivel").value = "";
+            document.getElementById("nivel").value = "Básico";
             document.getElementById("latitud").value = "";
             document.getElementById("longitud").value = "";
 
@@ -162,7 +162,6 @@
             },
             url: '/registrarse',
             success: function (data) {
-
             },
             error: function () {
                 console.log("Error");
