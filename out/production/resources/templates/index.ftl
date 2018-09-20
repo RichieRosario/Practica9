@@ -46,7 +46,7 @@
                     <input type="hidden" id="longitud" name="longitud"/>
 
 
-                    <button id="almacenar" type="submit" class="btn btn-info btn-xs">Almacenar</button>
+                    <button id="almacenar" type="button" class="btn btn-info btn-xs">Almacenar</button>
 
 
                 </form>
@@ -79,9 +79,10 @@
                 console.log($('input[name=longitud]').val())
                 var marker = new google.maps.Marker({
                     position: pos,
-                    map: map,
-                    title: 'Hello World!'
-                });
+                    map: map
+                });      infoWindow.setPosition(pos);
+                infoWindow.setContent('Usted se encuentra aqui.');
+                infoWindow.open(map);
                 map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -109,22 +110,26 @@
     $(document).ready(function(){
         $('#almacenar').click(function(){
 
+            var id = JSON.parse(localStorage.getItem("id")) || 1;
+
             var encuestasalmacenadas = JSON.parse(localStorage.getItem('encuestas')) || [];
 
             var encuesta = {
+                id: Number,
                 nombre: String,
                 sector: String,
                 nivel: String,
                 latitud: String,
                 longitud: String
             };
-
+            id2 = parseInt(id) + 1;
             var nombre = document.getElementById("nombre").value;
             var sector = document.getElementById("sector").value;
             var nivel = document.getElementById("nivel").value;
             var latitud = document.getElementById("latitud").value;
             var longitud = document.getElementById("longitud").value;
 
+            encuesta.id = id2;
             encuesta.nombre = nombre;
             encuesta.sector = sector;
             encuesta.nivel = nivel;
@@ -134,7 +139,7 @@
             encuestasalmacenadas.push(encuesta);
 
             localStorage.setItem("encuestas", JSON.stringify(encuestasalmacenadas));
-
+            localStorage.setItem("id", JSON.stringify(id2));
 
             document.getElementById("nombre").value = "";
             document.getElementById("sector").value = "";
@@ -142,8 +147,30 @@
             document.getElementById("latitud").value = "";
             document.getElementById("longitud").value = "";
 
+            sincronizarConServidor();
 
         });
     });
+
+    function sincronizarConServidor() {
+
+        var encuestas = JSON.parse(localStorage.getItem("encuestas"));
+        encuestas = JSON.stringify(encuestas);
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                encuestas: encuestas
+            },
+            url: '/registrarse',
+            success: function (data) {
+
+            },
+            error: function () {
+                console.log("Error");
+            }
+        });
+    }
 </script>
 </html>
