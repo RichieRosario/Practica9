@@ -15,34 +15,25 @@
 <div class="container" >
 
 
-
+<div class="card">
     <div class="table-responsive table-bordered ">
 
 
-        <table class="table">
+        <table class="table-dark">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>Sector</th>
                 <th>Nivel educativo</th>
-                <th>Acciones</th>
-            </tr>
+                </tr>
             </thead>
 
             <#list encuestas as encuesta>
                 <tr>
-                <td>${encuesta.getId()}</td>
                 <td>${encuesta.getNombre()}</td>
                 <td>${encuesta.getSector()}</td>
                 <td>${encuesta.getNivel()}</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a href="/encuestas/modificar/${encuesta.getId()}"><button type="button" class="btn btn-info btn-xs">Modificar</button></a>
 
-                        <a href="/encuestas/borrar/${encuesta.getId()}"><button type="button" class="btn btn-danger btn-xs">Eliminar</button></a>
-                    </div>
-                </td>
 
 
 
@@ -51,18 +42,16 @@
                     <td>No hay datos para mostrar.</td>
                     <td></td>
                 <td>
-                </td>
-                <td></td>
-                <td></td>
             </#list>
 
         </table>
     </div>
+</div>
 
 
 
     <p>Los registros se han realizado desde las siguientes ubicaciones:</p>
-    <div id="out" class="container-fluid"></div>
+    <div id="out" class="container-fluid" style=""></div>
     <br>
     <input type="hidden" id="latitud" name="latitud"/>
     <input type="hidden" id="longitud" name="longitud"/>
@@ -91,11 +80,11 @@
 
                 $('input[name=latitud]').val(position.coords.latitude);
                 $('input[name=longitud]').val(position.coords.longitude);
-                var latitudes = []
-                var longitudes = []
+                var locations =[];
+
                 console.log($('input[name=longitud]').val())
               var marker = new google.maps.Marker({
-                    position: pos,
+                    position: locations,
                     map: map
                 });
                 map.setCenter(pos);

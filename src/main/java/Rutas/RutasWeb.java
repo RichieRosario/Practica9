@@ -38,7 +38,12 @@ public class RutasWeb {
 
             Map<String, Object> attributes = new HashMap<>();
             List<Encuesta> encuestas = EncuestaDao.getAll();
+//            for(Encuesta e : encuestas){
+//                e.getLatitud();
+//                e.getLongitud();
+//            }
             attributes.put("encuestas",encuestas);
+//            attributes.put("localizaciones",localizaciones);
 
             return new ModelAndView(attributes, "index.ftl");
         }, freeMarkerEngine);
@@ -47,6 +52,12 @@ public class RutasWeb {
 
             Map<String, Object> attributes = new HashMap<>();
             return new ModelAndView(attributes, "encuesta.ftl");
+        }, freeMarkerEngine);
+
+        get("/local", (request, response) -> {
+
+            Map<String, Object> attributes = new HashMap<>();
+            return new ModelAndView(attributes, "almacenamientolocal.ftl");
         }, freeMarkerEngine);
 
         post("/registrarse", "application/json", (request, response) -> {
@@ -65,7 +76,6 @@ public class RutasWeb {
                 String latitud = jsonObject.get("latitud").getAsString();
                 String longitud = jsonObject.get("longitud").getAsString();
 
-                System.out.println( "" + nombre + "" + sector + "" + nivel + "" + latitud + "" + longitud);
                 Encuesta encuesta = new Encuesta();
                 encuesta.setNombre(nombre);
                 encuesta.setSector(sector);
@@ -81,42 +91,42 @@ public class RutasWeb {
             return json;
         });
 
-
-        post("/encuestas/modificar/:id", (request, response) -> {
-
-            Map<String, Object> attributes = new HashMap<>();
-            int id = Integer.parseInt(request.params("id"));
-            String nombre = request.queryParams("nombre");
-            String sector = request.queryParams("sector");
-            String nivel = request.queryParams("nivel");
-            String latitud = request.queryParams("latitud");
-            String longitud = request.queryParams("longitud");
-
-            Encuesta e = EncuestaDao.findOne(id);
-            e.setNombre(nombre);
-            e.setSector(sector);
-            e.setNivel(nivel);
-            e.setLatitud(latitud);
-            e.setLongitud(longitud);
-            EncuestaDao.update(e);
-
-            response.redirect("/");
-
-            return "Ok";
-        });
-
-
-        post("/encuestas/borrar/:id", (request, response) -> {
-
-            Map<String, Object> attributes = new HashMap<>();
-            int id = Integer.parseInt(request.params("id"));
-            Encuesta e = EncuestaDao.findOne(id);
-            EncuestaDao.deleteById(e);
-
-            response.redirect("/");
-
-            return "Ok";
-        });
+//
+//        post("/encuestas/modificar/:id", (request, response) -> {
+//
+//            Map<String, Object> attributes = new HashMap<>();
+//            int id = Integer.parseInt(request.params("id"));
+//            String nombre = request.queryParams("nombre");
+//            String sector = request.queryParams("sector");
+//            String nivel = request.queryParams("nivel");
+//            String latitud = request.queryParams("latitud");
+//            String longitud = request.queryParams("longitud");
+//
+//            Encuesta e = EncuestaDao.findOne(id);
+//            e.setNombre(nombre);
+//            e.setSector(sector);
+//            e.setNivel(nivel);
+//            e.setLatitud(latitud);
+//            e.setLongitud(longitud);
+//            EncuestaDao.update(e);
+//
+//            response.redirect("/");
+//
+//            return "Ok";
+//        });
+//
+//
+//        post("/encuestas/borrar/:id", (request, response) -> {
+//
+//            Map<String, Object> attributes = new HashMap<>();
+//            int id = Integer.parseInt(request.params("id"));
+//            Encuesta e = EncuestaDao.findOne(id);
+//            EncuestaDao.deleteById(e);
+//
+//            response.redirect("/");
+//
+//            return "Ok";
+//        });
 
     }
 }

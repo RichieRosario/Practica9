@@ -15,43 +15,32 @@
 <div class="container" >
 
 
-<div class="card">
+
     <div class="table-responsive table-bordered ">
 
 
-        <table class="table-dark">
+        <table id="datoslocal" class="table">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Sector</th>
                 <th>Nivel educativo</th>
-                </tr>
+                <th>Acciones</th>
+            </tr>
             </thead>
 
-            <#list encuestas as encuesta>
-                <tr>
-                <td>${encuesta.getNombre()}</td>
-                <td>${encuesta.getSector()}</td>
-                <td>${encuesta.getNivel()}</td>
+            <tbody>
 
-
-
-
-                </tr>
-            <#else>
-                    <td>No hay datos para mostrar.</td>
-                    <td></td>
-                <td>
-            </#list>
+            </tbody>
 
         </table>
     </div>
-</div>
 
 
 
     <p>Los registros se han realizado desde las siguientes ubicaciones:</p>
-    <div id="out" class="container-fluid" style=""></div>
+    <div id="out" class="container-fluid"></div>
     <br>
     <input type="hidden" id="latitud" name="latitud"/>
     <input type="hidden" id="longitud" name="longitud"/>
@@ -80,11 +69,11 @@
 
                 $('input[name=latitud]').val(position.coords.latitude);
                 $('input[name=longitud]').val(position.coords.longitude);
-                var locations =[];
-
+                var latitudes = []
+                var longitudes = []
                 console.log($('input[name=longitud]').val())
               var marker = new google.maps.Marker({
-                    position: locations,
+                    position: pos,
                     map: map
                 });
                 map.setCenter(pos);
@@ -109,52 +98,33 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAiRGQv-yrkruO0SLtxrlkCnL008nJUHc&callback=initMap">
 </script>
 
-
 <script>
-    $(document).ready(function(){
-        $('#almacenar').click(function(){
 
-            var id = JSON.parse(localStorage.getItem("id")) || 0;
 
-            var encuestasalmacenadas = JSON.parse(localStorage.getItem('encuestas')) || [];
+    function cargar(){
 
-            var encuesta = {
-                id: Number,
-                nombre: String,
-                sector: String,
-                nivel: String,
-                latitud: String,
-                longitud: String
-            };
-            id2 = parseInt(id) + 1;
-            var nombre = document.getElementById("nombre").value;
-            var sector = document.getElementById("sector").value;
-            var nivel = document.getElementById("nivel").value;
-            var latitud = document.getElementById("latitud").value;
-            var longitud = document.getElementById("longitud").value;
+        var encuestatemp = {
+            id: Number,
+            nombre: String,
+            sector: String,
+            nivel: String,
+            latitud: String,
+            longitud: String
+        };
 
-            encuesta.id = id2;
-            encuesta.nombre = nombre;
-            encuesta.sector = sector;
-            encuesta.nivel = nivel;
-            encuesta.latitud = latitud;
-            encuesta.longitud = longitud;
+        var encuestasalmacenadas = JSON.parse(localStorage.getItem('encuestas'));
 
-            encuestasalmacenadas.push(encuesta);
 
-            localStorage.setItem("encuestas", JSON.stringify(encuestasalmacenadas));
-            localStorage.setItem("id", JSON.stringify(id2));
+        for(var i = 0; i < encuestasalmacenadas.length; i++){
 
-            document.getElementById("nombre").value = "";
-            document.getElementById("sector").value = "";
-            document.getElementById("nivel").value = "";
-            document.getElementById("latitud").value = "";
-            document.getElementById("longitud").value = "";
+            var markup ="<tr><td>"+encuestasalmacenadas[i].id +
+                    "</td><td>"+encuestasalmacenadas[i].nombre+"</td><td>"+ encuestasalmacenadas[i].sector + "</td><td>"+encuestasalmacenadas[i].nivel + "</td><td><div class=\"btn-group\" role=\"group\"><button class=\"btn btn-info btn-xs\">Modificar</button><button class=\"btn btn-danger btn-xs\">Eliminar</button></div></td></tr>";
 
-            sincronizarConServidor();
+            $("#datoslocal tbody").append(markup);
+        }
 
-        });
-    });
+    }
+
 
     function sincronizarConServidor() {
 
@@ -176,5 +146,10 @@
             }
         });
     }
+
+    window.addEventListener("DOMContentLoaded", function() {
+        cargar();
+    });
+
 </script>
 </html>
