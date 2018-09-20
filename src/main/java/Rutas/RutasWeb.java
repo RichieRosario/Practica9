@@ -59,16 +59,14 @@ public class RutasWeb {
             json.forEach((obj) ->
             {
                 JsonObject jsonObject = obj.getAsJsonObject();
-                int id = jsonObject.get("id").getAsInt();
                 String nombre = jsonObject.get("nombre").getAsString();
                 String sector = jsonObject.get("sector").getAsString();
                 String nivel = jsonObject.get("nivel").getAsString();
                 String latitud = jsonObject.get("latitud").getAsString();
                 String longitud = jsonObject.get("longitud").getAsString();
 
-                System.out.println(id + "" + nombre + "" + sector + "" + nivel + "" + latitud + "" + longitud);
+                System.out.println( "" + nombre + "" + sector + "" + nivel + "" + latitud + "" + longitud);
                 Encuesta encuesta = new Encuesta();
-                encuesta.setId(id);
                 encuesta.setNombre(nombre);
                 encuesta.setSector(sector);
                 encuesta.setNivel(nivel);

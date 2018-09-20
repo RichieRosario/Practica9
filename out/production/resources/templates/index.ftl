@@ -94,16 +94,7 @@
                 var latitudes = []
                 var longitudes = []
                 console.log($('input[name=longitud]').val())
-                <#list latitudes as latitud>
-                    latitudes.push(${latitud})
-                </#list>
-                   <#list longitudes as longitud>
-                    longitudes.push(${latitud})
-                   </#list>
-                var posiciones = {
-                    lat: latitudes
-                }
-                var marker = new google.maps.Marker({
+              var marker = new google.maps.Marker({
                     position: pos,
                     map: map
                 });
