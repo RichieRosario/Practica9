@@ -110,7 +110,7 @@
     $(document).ready(function(){
         $('#almacenar').click(function(){
 
-            var id = JSON.parse(localStorage.getItem("id")) || 1;
+            var id = JSON.parse(localStorage.getItem("id")) || 0;
 
             var encuestasalmacenadas = JSON.parse(localStorage.getItem('encuestas')) || [];
 

@@ -1,5 +1,9 @@
 package Rutas;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import dao.*;
 import jdk.nashorn.internal.parser.JSONParser;
 import modelo.*;
@@ -38,8 +42,35 @@ public class RutasWeb {
 
         post("/registrarse", (request, response) -> {
 
-           Object object = request.queryParams("encuestas");
-            System.out.println(object.toString());
+            EncuestaDao encuestaDao = null;
+
+            String object = request.queryParams("encuestas");
+
+            JsonArray json = (JsonArray) new JsonParser().parse(object);
+
+            json.forEach((obj) ->
+            {
+                JsonObject jsonObject = obj.getAsJsonObject();
+                int id = jsonObject.get("id").getAsInt();
+                String nombre = jsonObject.get("nombre").getAsString();
+                String sector = jsonObject.get("sector").getAsString();
+                String nivel = jsonObject.get("nivel").getAsString();
+                String latitud = jsonObject.get("latitud").getAsString();
+                String longitud = jsonObject.get("longitud").getAsString();
+
+                System.out.println(id + "" + nombre + "" + sector + "" + nivel + "" + latitud + "" + longitud);
+                Encuesta encuesta = new Encuesta();
+                encuesta.setId(id);
+                encuesta.setNombre(nombre);
+                encuesta.setSector(sector);
+                encuesta.setNivel(nivel);
+                encuesta.setLatitud(latitud);
+                encuesta.setLongitud(longitud);
+
+                System.out.println(encuesta);
+                encuestaDao.add(encuesta);
+
+            });
 
             return null;
         });
