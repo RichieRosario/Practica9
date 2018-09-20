@@ -1,5 +1,9 @@
 package Rutas;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import dao.*;
 import jdk.nashorn.internal.parser.JSONParser;
 import modelo.*;
@@ -38,8 +42,11 @@ public class RutasWeb {
 
         post("/registrarse", (request, response) -> {
 
-           Object object = request.queryParams("encuestas");
-            System.out.println(object.toString());
+            String object = request.queryParams("encuestas");
+
+            JsonArray json = (JsonArray) new JsonParser().parse(object);
+
+           System.out.println(json.get(1));
 
             return null;
         });
