@@ -46,7 +46,7 @@
                     <input type="hidden" id="longitud" name="longitud"/>
 
 
-                    <button id="almacenar" type="submit" class="btn btn-info btn-xs">Almacenar</button>
+                    <button id="almacenar" type="button" class="btn btn-info btn-xs">Almacenar</button>
 
 
                 </form>
@@ -79,9 +79,10 @@
                 console.log($('input[name=longitud]').val())
                 var marker = new google.maps.Marker({
                     position: pos,
-                    map: map,
-                    title: 'Hello World!'
-                });
+                    map: map
+                });      infoWindow.setPosition(pos);
+                infoWindow.setContent('Usted se encuentra aqui.');
+                infoWindow.open(map);
                 map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -142,8 +143,30 @@
             document.getElementById("latitud").value = "";
             document.getElementById("longitud").value = "";
 
+            sincronizarConServidor();
 
         });
     });
+
+    function sincronizarConServidor() {
+
+        var encuestas = JSON.parse(localStorage.getItem("encuestas"));
+        encuestas = JSON.stringify(encuestas);
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                encuestas: encuestas
+            },
+            url: '/registrarse',
+            success: function (data) {
+
+            },
+            error: function () {
+                console.log("Error");
+            }
+        });
+    }
 </script>
 </html>
