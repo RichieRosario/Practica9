@@ -144,7 +144,6 @@
             document.getElementById("latitud").value = "";
             document.getElementById("longitud").value = "";
 
-            sincronizarConServidor();
 
         });
     });
@@ -162,6 +161,7 @@
             },
             url: '/registrarse',
             success: function (data) {
+                localStorage.clear();
             },
             error: function () {
                 console.log("Error");

@@ -4,6 +4,7 @@
     <list default="true" id="bad96b0b-1d24-4dba-b027-885a1d59211b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/almacenamientolocal.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/almacenamientolocal.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/encuesta.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/encuesta.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout.ftl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -49,7 +50,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="28" />
-          <entry key="ftl" value="1308" />
+          <entry key="ftl" value="1649" />
           <entry key="gradle" value="10" />
           <entry key="java" value="820" />
           <entry key="xml" value="18" />
@@ -57,7 +58,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="FTL" value="1308" />
+          <entry key="FTL" value="1649" />
           <entry key="Groovy" value="10" />
           <entry key="JAVA" value="820" />
           <entry key="PLAIN_TEXT" value="28" />
@@ -84,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/almacenamientolocal.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="212" column="31" lean-forward="true" selection-start-line="212" selection-start-column="31" selection-end-line="212" selection-end-column="31" />
+            <state relative-caret-position="270">
+              <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -124,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layout.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            <state relative-caret-position="315">
+              <caret line="21" column="91" selection-start-line="21" selection-start-column="91" selection-end-line="21" selection-end-column="91" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#html#0;n#!!top" expanded="true" />
@@ -156,20 +157,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/encuesta.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1470">
-              <caret line="46" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15930">
-              <caret line="1133" column="10" selection-start-line="1133" selection-start-column="10" selection-end-line="1133" selection-end-column="10" />
+              <caret line="1125" column="10" selection-start-line="1125" selection-start-column="10" selection-end-line="1125" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -591,8 +583,8 @@
         <option value="$PROJECT_DIR$/src/main/java/dao/EncuestaDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Rutas/RutasWeb.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/layout.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/encuesta.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/layout.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/almacenamientolocal.ftl" />
       </list>
     </option>
@@ -802,7 +794,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537484513421" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537486105098" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -860,7 +852,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21141000" />
+    <option name="totallyTimeSpent" value="22607000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="6" />
@@ -982,7 +974,7 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15930">
-          <caret line="1133" column="10" selection-start-line="1133" selection-start-column="10" selection-end-line="1133" selection-end-column="10" />
+          <caret line="1125" column="10" selection-start-line="1125" selection-start-column="10" selection-end-line="1125" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1010,17 +1002,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layout.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
@@ -1028,17 +1009,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/almacenamientolocal.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/encuesta.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="212" column="31" lean-forward="true" selection-start-line="212" selection-start-column="31" selection-end-line="212" selection-end-column="31" />
+        <state relative-caret-position="450">
+          <caret line="170" column="9" lean-forward="true" selection-start-line="104" selection-end-line="170" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/encuesta.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layout.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1470">
-          <caret line="46" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="46" />
+        <state relative-caret-position="315">
+          <caret line="21" column="91" selection-start-line="21" selection-start-column="91" selection-end-line="21" selection-end-column="91" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/almacenamientolocal.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
         </state>
       </provider>
     </entry>

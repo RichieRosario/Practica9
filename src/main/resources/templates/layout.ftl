@@ -19,8 +19,7 @@
             </div>
             <ul class="nav navbar-nav" style="text-decoration:none">
                 <li class="navbar-item"><a href="/" class="nav-link"  >Inicio</a></li>
-                <li class="navbar-item"><a href="/registrarse" class="nav-link">Encuesta</a></li>
-                <li class="navbar-item"><a href="/local" class="nav-link">Almacenamiento Local</a></li>
+                <li class="navbar-item"><a href="/local" class="nav-link">Encuesta</a></li>>
 
             </ul>
 

@@ -43,10 +43,11 @@
 
 
 
-
-
-        <button id="modificar" onclick="modificar2()" type="button" class="btn btn-info btn-xs">Guardar Cambios</button>
-        <input type="hidden" id="latitud" name="latitud"/>
+        <div class="modal-footer">
+        <button id="almacenar" type="button" class="btn btn-info btn-xs">Agregar</button>
+        <button id="modificar" onclick="modificar2()" type="button" class="btn btn-primary btn-xs disabled">Guardar Cambios</button>
+        </div>
+            <input type="hidden" id="latitud" name="latitud"/>
         <input type="hidden" id="longitud" name="longitud"/>
 
 
@@ -54,7 +55,7 @@
 
     <br>
 
-    <div class="table-responsive table-bordered ">
+    <div class="table-responsive table-bordered card">
 
 
         <table id="datoslocal" class="table">
@@ -75,12 +76,15 @@
         </table>
     </div>
 
-
-
+<br>
+    <div class="modal-footer">
+    <button id="sincronizar" type="button" onclick="sincronizarConServidor()" class="btn btn-info btn-warning">Sincronizar</button>
+    </div>
 
 
 
 </div>
+
 
 </body>
 <br>
@@ -133,7 +137,7 @@
 <script>
 
     function cargar(){
-
+        $('#modificar').prop('disabled', true)
         var encuestasalmacenadas = JSON.parse(localStorage.getItem('encuestas'));
 
 
@@ -188,7 +192,8 @@
 
         var encuestasalmacenadas = JSON.parse(localStorage.getItem("encuestas"));
 
-
+        $('#almacenar').prop('disabled', true)
+        $('#modificar').prop('disabled', false)
         for(var i = 0; i < encuestasalmacenadas.length; i++){
 
             if(encuestasalmacenadas[i].id == idmodificar){
@@ -258,11 +263,54 @@
         }
 
 
+    $(function() {
+        cargar();
+    });
+
+
+    $(document).ready(function(){
+        $('#almacenar').click(function(){
+
+            var id = JSON.parse(localStorage.getItem("id")) || 0;
+
+            var encuestasalmacenadas = JSON.parse(localStorage.getItem('encuestas')) || [];
+
+            var encuesta = {
+                id: Number,
+                nombre: String,
+                sector: String,
+                nivel: String,
+                latitud: String,
+                longitud: String
+            };
+            id2 = parseInt(id) + 1;
+            var nombre = document.getElementById("nombre").value;
+            var sector = document.getElementById("sector").value;
+            var nivel = document.getElementById("nivel").value;
+            var latitud = document.getElementById("latitud").value;
+            var longitud = document.getElementById("longitud").value;
+
+            encuesta.id = id2;
+            encuesta.nombre = nombre;
+            encuesta.sector = sector;
+            encuesta.nivel = nivel;
+            encuesta.latitud = latitud;
+            encuesta.longitud = longitud;
+
+            encuestasalmacenadas.push(encuesta);
+
+            localStorage.setItem("encuestas", JSON.stringify(encuestasalmacenadas));
+            localStorage.setItem("id", JSON.stringify(id2));
+
+
+            location.reload();
+        });
+    });
+
     function sincronizarConServidor() {
 
         var encuestas = JSON.parse(localStorage.getItem("encuestas"));
         encuestas = JSON.stringify(encuestas);
-
 
         $.ajax({
             type: 'POST',
@@ -272,17 +320,13 @@
             },
             url: '/registrarse',
             success: function (data) {
-                    },
+                localStorage.clear();
+            },
             error: function () {
                 console.log("Error");
             }
         });
     }
-
-    $(function() {
-        cargar();
-    });
-
 
 </script>
 </html>
