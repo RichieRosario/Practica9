@@ -37,7 +37,15 @@ public class RutasWeb {
         get("/", (request, response) -> {
 
             Map<String, Object> attributes = new HashMap<>();
+            List<Encuesta> encuestas = EncuestaDao.getAll();
+            attributes.put("encuestas",encuestas);
             return new ModelAndView(attributes, "index.ftl");
+        }, freeMarkerEngine);
+
+        get("/registrarse", (request, response) -> {
+
+            Map<String, Object> attributes = new HashMap<>();
+            return new ModelAndView(attributes, "encuesta.ftl");
         }, freeMarkerEngine);
 
         post("/registrarse", (request, response) -> {
@@ -96,8 +104,8 @@ public class RutasWeb {
 
             response.redirect("/");
 
-            return new ModelAndView(attributes, "index.ftl");
-        }, freeMarkerEngine);
+            return null;
+        });
 
 
         post("/eliminar/:id", (request, response) -> {
@@ -109,8 +117,8 @@ public class RutasWeb {
 
             response.redirect("/");
 
-            return new ModelAndView(attributes, "index.ftl");
-        }, freeMarkerEngine);
+            return null;
+        });
 
     }
 }

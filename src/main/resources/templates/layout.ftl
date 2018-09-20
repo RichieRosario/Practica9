@@ -8,6 +8,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+        <link href="/css/offline-theme-chrome.css" rel="stylesheet" />
+        <link href="/css/offline-language-spanish.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script></head>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -17,7 +19,7 @@
             </div>
             <ul class="nav navbar-nav" style="text-decoration:none">
                 <li class="navbar-item"><a href="/" class="nav-link"  >Inicio</a></li>
-                <li class="navbar-item"><a href="/listado" class="nav-link">Listar</a></li>
+                <li class="navbar-item"><a href="/registrarse" class="nav-link">Encuesta</a></li>
 
             </ul>
 
@@ -29,4 +31,7 @@
             <p>Práctica #9 - Ricardo y Emilio &copy; 2018 </p>
 
     </footer>
+
+
+    <script src="/js/offline.min.js"></script>
 </html>

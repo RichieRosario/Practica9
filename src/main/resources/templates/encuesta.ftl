@@ -2,7 +2,7 @@
 <#include "layout.ftl">
 <style>
     #out {
-        height: 50%;
+        height: 0%;
     }
     html, body {
         height: 100%;
@@ -16,51 +16,40 @@
 
 
 
-    <div class="table-responsive table-bordered ">
-
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Sector</th>
-                <th>Nivel educativo</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-            <tr>
-            <#list encuestas as encuesta>
-
-                <td>${encuesta.getId()}</td>
-                <td>${encuesta.getNombre()}</td>
-                <td>${encuesta.getSector()}</td>
-                <td>${encuesta.getNivel()}</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a href="/modificar/${encuesta.getId()}"><button type="button" class="btn btn-primary btn-xs">Modificar</button></a>
-
-                        <a href="/borrar/${encuesta.getId()}"><button type="button" class="btn btn-primary btn-xs">Eliminar</button></a>
+                <form method="post" class="container-fluid" action="/registrarse"  >
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <input type="text" name="nombre" id="nombre" class="form-control" style="width:92.5%" placeholder="Nombre"/>
+                        </div>
                     </div>
-                </td>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <input type="text" name="sector" id="sector" class="form-control" style="width:92.5%" placeholder="Sector"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <select name="nivel" id="nivel" class="form-control" style="width:92.5%" placeholder="Nivel escolar">
+                            <option value="Basico">Básico</option>
+                            <option value="Medio">Medio</option>
+                            <option value="Grado Universitario">Grado Universitario</option>
+                            <option value="Postgrado">Postgrado</option>
+                                <option value="Doctorado">Doctorado</option>
+                            </select>
+                        </div>
+                    </div>
 
 
-                <p>Los registros se han realizado desde las siguientes ubicaciones:</p>
-                <div id="out" class="container-fluid"></div>
-                <input type="hidden" id="latitud" name="latitud"/>
-                <input type="hidden" id="longitud" name="longitud"/>
+                    <div id="out" class="container-fluid"></div>
+                    <input type="hidden" id="latitud" name="latitud"/>
+                    <input type="hidden" id="longitud" name="longitud"/>
 
-            <#else>
-                    <td>No hay datos para mostrar.</td>
-                    <td></td>
-                <td>
-                </td>
-                <td></td>
-                <td></td>
-            </#list>
-        </tr>
-        </table>
-    </div>
+
+                    <button id="almacenar" type="button" class="btn btn-info btn-xs">Almacenar</button>
+
+
+                </form>
 
 </div>
 <br>
@@ -87,7 +76,6 @@
                 $('input[name=latitud]').val(position.coords.latitude);
                 $('input[name=longitud]').val(position.coords.longitude);
 
-                console.log($('input[name=longitud]').val())
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map
