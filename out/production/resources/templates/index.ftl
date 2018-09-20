@@ -19,7 +19,7 @@
     <div class="table-responsive table-bordered ">
 
 
-        <table class="table-dark">
+        <table class="table">
             <thead>
             <tr>
                 <th>Nombre</th>
@@ -63,6 +63,17 @@
 
 
 <script>
+
+    var longitudes = []
+
+    var latitudes = []
+
+
+                <#list ubicaciones as u>
+                    longitudes.push(${u.getLongitud()})
+                    latitudes.push(${u.getLatitud()})
+                </#list>
+
     var map, infoWindow;
     function initMap() {
         map = new google.maps.Map(document.getElementById('out'), {
@@ -80,13 +91,20 @@
 
                 $('input[name=latitud]').val(position.coords.latitude);
                 $('input[name=longitud]').val(position.coords.longitude);
-                var locations =[];
+                localizaciones = []
 
-                console.log($('input[name=longitud]').val())
-              var marker = new google.maps.Marker({
-                    position: locations,
+
+
+                    localizaciones.push(latitudes,longitudes);
+                    console.log(localizaciones);
+
+            for(var i=0; i<localizaciones[0].length;i++) {
+                var marker = new google.maps.Marker({
+                    position:  new google.maps.LatLng(localizaciones[0][i],localizaciones[1][i]),
                     map: map
                 });
+                marker.setMap(map);
+            }
                 map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());

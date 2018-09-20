@@ -38,12 +38,25 @@ public class RutasWeb {
 
             Map<String, Object> attributes = new HashMap<>();
             List<Encuesta> encuestas = EncuestaDao.getAll();
-//            for(Encuesta e : encuestas){
-//                e.getLatitud();
-//                e.getLongitud();
-//            }
+            List<Ubicacion> ubicaciones = new ArrayList<>();
+            for(Encuesta e : encuestas){
+                Ubicacion u = new Ubicacion();
+                 if(e.getLatitud() != ""){
+                     u.setLatitud(Float.parseFloat(e.getLatitud()));}
+                else{
+                    u.setLatitud(0.0f);
+                }
+
+                if(e.getLongitud()!=""){
+                u.setLongitud(Float.parseFloat(e.getLongitud()));}
+                else{
+                    u.setLongitud(0.0f);
+                }
+                ubicaciones.add(u);
+            }
+            attributes.put("ubicaciones", ubicaciones);
             attributes.put("encuestas",encuestas);
-//            attributes.put("localizaciones",localizaciones);
+
 
             return new ModelAndView(attributes, "index.ftl");
         }, freeMarkerEngine);
