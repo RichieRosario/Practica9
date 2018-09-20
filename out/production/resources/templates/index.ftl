@@ -110,22 +110,26 @@
     $(document).ready(function(){
         $('#almacenar').click(function(){
 
+            var id = JSON.parse(localStorage.getItem("id")) || 1;
+
             var encuestasalmacenadas = JSON.parse(localStorage.getItem('encuestas')) || [];
 
             var encuesta = {
+                id: Number,
                 nombre: String,
                 sector: String,
                 nivel: String,
                 latitud: String,
                 longitud: String
             };
-
+            id2 = parseInt(id) + 1;
             var nombre = document.getElementById("nombre").value;
             var sector = document.getElementById("sector").value;
             var nivel = document.getElementById("nivel").value;
             var latitud = document.getElementById("latitud").value;
             var longitud = document.getElementById("longitud").value;
 
+            encuesta.id = id2;
             encuesta.nombre = nombre;
             encuesta.sector = sector;
             encuesta.nivel = nivel;
@@ -135,7 +139,7 @@
             encuestasalmacenadas.push(encuesta);
 
             localStorage.setItem("encuestas", JSON.stringify(encuestasalmacenadas));
-
+            localStorage.setItem("id", JSON.stringify(id2));
 
             document.getElementById("nombre").value = "";
             document.getElementById("sector").value = "";
