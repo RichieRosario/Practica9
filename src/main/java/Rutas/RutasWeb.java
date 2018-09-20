@@ -39,6 +39,7 @@ public class RutasWeb {
             Map<String, Object> attributes = new HashMap<>();
             List<Encuesta> encuestas = EncuestaDao.getAll();
             attributes.put("encuestas",encuestas);
+
             return new ModelAndView(attributes, "index.ftl");
         }, freeMarkerEngine);
 
@@ -48,9 +49,8 @@ public class RutasWeb {
             return new ModelAndView(attributes, "encuesta.ftl");
         }, freeMarkerEngine);
 
-        post("/registrarse", (request, response) -> {
+        post("/registrarse", "application/json", (request, response) -> {
 
-            EncuestaDao encuestaDao = null;
 
             String object = request.queryParams("encuestas");
 
@@ -75,16 +75,16 @@ public class RutasWeb {
                 encuesta.setLatitud(latitud);
                 encuesta.setLongitud(longitud);
 
-                System.out.println(encuesta);
-                encuestaDao.add(encuesta);
+                System.out.println(encuesta.getId());
+                EncuestaDao.add(encuesta);
 
             });
 
-            return null;
+            return json;
         });
 
 
-        post("/modificar/:id", (request, response) -> {
+        post("/encuestas/modificar/:id", (request, response) -> {
 
             Map<String, Object> attributes = new HashMap<>();
             int id = Integer.parseInt(request.params("id"));
@@ -104,11 +104,11 @@ public class RutasWeb {
 
             response.redirect("/");
 
-            return null;
+            return "Ok";
         });
 
 
-        post("/eliminar/:id", (request, response) -> {
+        post("/encuestas/borrar/:id", (request, response) -> {
 
             Map<String, Object> attributes = new HashMap<>();
             int id = Integer.parseInt(request.params("id"));
@@ -117,7 +117,7 @@ public class RutasWeb {
 
             response.redirect("/");
 
-            return null;
+            return "Ok";
         });
 
     }

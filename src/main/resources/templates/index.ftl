@@ -29,27 +29,24 @@
                 <th>Acciones</th>
             </tr>
             </thead>
-            <tr>
-            <#list encuestas as encuesta>
 
+            <#list encuestas as encuesta>
+                <tr>
                 <td>${encuesta.getId()}</td>
                 <td>${encuesta.getNombre()}</td>
                 <td>${encuesta.getSector()}</td>
                 <td>${encuesta.getNivel()}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <a href="/modificar/${encuesta.getId()}"><button type="button" class="btn btn-primary btn-xs">Modificar</button></a>
+                        <a href="/encuestas/modificar/${encuesta.getId()}"><button type="button" class="btn btn-info btn-xs">Modificar</button></a>
 
-                        <a href="/borrar/${encuesta.getId()}"><button type="button" class="btn btn-primary btn-xs">Eliminar</button></a>
+                        <a href="/encuestas/borrar/${encuesta.getId()}"><button type="button" class="btn btn-danger btn-xs">Eliminar</button></a>
                     </div>
                 </td>
 
 
-                <p>Los registros se han realizado desde las siguientes ubicaciones:</p>
-                <div id="out" class="container-fluid"></div>
-                <input type="hidden" id="latitud" name="latitud"/>
-                <input type="hidden" id="longitud" name="longitud"/>
 
+                </tr>
             <#else>
                     <td>No hay datos para mostrar.</td>
                     <td></td>
@@ -58,14 +55,22 @@
                 <td></td>
                 <td></td>
             </#list>
-        </tr>
+
         </table>
     </div>
 
-</div>
-<br>
-</body>
 
+
+    <p>Los registros se han realizado desde las siguientes ubicaciones:</p>
+    <div id="out" class="container-fluid"></div>
+    <br>
+    <input type="hidden" id="latitud" name="latitud"/>
+    <input type="hidden" id="longitud" name="longitud"/>
+
+</div>
+
+</body>
+<br>
 
 
 <script>
@@ -86,9 +91,10 @@
 
                 $('input[name=latitud]').val(position.coords.latitude);
                 $('input[name=longitud]').val(position.coords.longitude);
-
+                var latitudes = []
+                var longitudes = []
                 console.log($('input[name=longitud]').val())
-                var marker = new google.maps.Marker({
+              var marker = new google.maps.Marker({
                     position: pos,
                     map: map
                 });

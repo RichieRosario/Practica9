@@ -1,4 +1,4 @@
-<html>
+
 <#include "layout.ftl">
 <style>
     #out {
@@ -170,4 +170,3 @@
         });
     }
 </script>
-</html>

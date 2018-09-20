@@ -14,7 +14,6 @@ public class Encuesta implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, unique = true, updatable = false)
     private int id;
 
     @Column(name = "nombre")
@@ -29,10 +28,12 @@ public class Encuesta implements Serializable {
     @Column(name = "latitud")
     private String latitud;
 
-
     @Column(name = "longitud")
     private String longitud;
 
+    public Encuesta(){
+        super();
+    }
 
     private boolean deleted = false;
 
