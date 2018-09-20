@@ -1,4 +1,4 @@
-<html>
+<html  manifest="/p9.appcache">
     <head>
         <title>Práctica #9</title>
         <meta charset="utf-8">
