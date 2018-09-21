@@ -52,7 +52,9 @@ public class Main {
 
         configuration.setClassForTemplateLoading(Main.class, "/templates");
 
+        System.out.println(configuration.isCacheStorageExplicitlySet());
         staticFileLocation("/public");
+
 
         HibernateUtil.buildSessionFactory().openSession().close();
 

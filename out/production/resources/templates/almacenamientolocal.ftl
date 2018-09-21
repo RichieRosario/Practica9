@@ -1,3 +1,4 @@
+
 <html>
 <#include "layout.ftl">
 <style>
@@ -138,32 +139,31 @@
 
     function cargar(){
         $('#modificar').prop('disabled', true)
+        $('#almacenar').prop('disabled', false)
         var encuestasalmacenadas = JSON.parse(localStorage.getItem('encuestas'));
 
-
+        var markup = "";
         for(var i = 0; i < encuestasalmacenadas.length; i++){
-            var id;
-            console.log(id);
-            var markup ="<tr><td>"+encuestasalmacenadas[i].id +
+
+            markup +="<tr><td>"+encuestasalmacenadas[i].id +
                     "</td><td>"+encuestasalmacenadas[i].nombre+"</td><td>"+ encuestasalmacenadas[i].sector + "</td><td>"+encuestasalmacenadas[i].nivel + "</td><td><div class=\"btn-group\" role=\"group\"><button type=\"button\" onclick=\"modificar("+encuestasalmacenadas[i].id+")\" class=\"btn btn-info btn-xs\">Modificar</button><button type=\"button\" onclick=\"eliminar("+encuestasalmacenadas[i].id+")\" class=\"btn btn-danger btn-xs\">Eliminar</button></div></td></tr>";
 
 
-            $("#datoslocal tbody").append(markup);
         }
+
+
+        document.getElementById("nombre").value = "";
+        document.getElementById("sector").value = "";
+        document.getElementById("nivel").selectedIndex = 0;
+        document.getElementById("latitud").value = "";
+        document.getElementById("longitud").value = "";
+
+        $("#datoslocal tbody").html(markup);
 
     }
 
     function eliminar(ideliminar){
 
-
-        var encuestatemp = {
-            id: Number,
-            nombre: String,
-            sector: String,
-            nivel: String,
-            latitud: String,
-            longitud: String
-        };
 
         var encuestasalmacenadas = JSON.parse(localStorage.getItem("encuestas"));
 
@@ -173,18 +173,13 @@
 
          if(encuestasalmacenadas[i].id != ideliminar){
 
-             encuestatemp.id = encuestasalmacenadas[i].id;
-             encuestatemp.nombre = encuestasalmacenadas[i].nombre;
-             encuestatemp.sector = encuestasalmacenadas[i].sector;
-             encuestatemp.nivel = encuestasalmacenadas[i].nivel;
-             encuestatemp.latitud = encuestasalmacenadas[i].latitud;
-            encuestatemp.longitud = encuestasalmacenadas[i].longitud;
-            encuestasfinal.push(encuestatemp);
+             encuestasfinal.push(encuestasalmacenadas[i]);
          }
         }
 
         localStorage.setItem("encuestas", JSON.stringify(encuestasfinal));
-        location.reload();
+
+        cargar();
     }
 
 
@@ -250,14 +245,9 @@
 
 
 
-            document.getElementById("nombre").value = "";
-            document.getElementById("sector").value = "";
-            document.getElementById("nivel").value = "Básico";
-            document.getElementById("latitud").value = "";
-            document.getElementById("longitud").value = "";
 
             localStorage.setItem("encuestas", JSON.stringify(encuestasalmacenadas));
-            location.reload();
+            cargar();
 
 
         }
@@ -303,7 +293,7 @@
             localStorage.setItem("id", JSON.stringify(id2));
 
 
-            location.reload();
+            cargar();
         });
     });
 
@@ -321,6 +311,7 @@
             url: '/registrarse',
             success: function (data) {
                 localStorage.clear();
+                cargar();
             },
             error: function () {
                 console.log("Error");
