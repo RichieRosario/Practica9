@@ -54,6 +54,7 @@ public class RutasWeb {
                 }
                 ubicaciones.add(u);
             }
+
             attributes.put("ubicaciones", ubicaciones);
             attributes.put("encuestas",encuestas);
 

@@ -3,7 +3,7 @@
 <#include "layout.ftl">
 <style>
     #out {
-        height: 50%;
+        height: 0%;
     }
     html, body {
         height: 100%;
@@ -48,7 +48,9 @@
         <button id="almacenar" type="button" class="btn btn-info btn-xs">Agregar</button>
         <button id="modificar" onclick="modificar2()" type="button" class="btn btn-primary btn-xs disabled">Guardar Cambios</button>
         </div>
-            <input type="hidden" id="latitud" name="latitud"/>
+        <div id="out" class="container-fluid" style=""></div>
+
+        <input type="hidden" id="latitud" name="latitud"/>
         <input type="hidden" id="longitud" name="longitud"/>
 
 
