@@ -311,7 +311,7 @@
             url: '/registrarse',
             success: function (data) {
                 localStorage.clear();
-                cargar();
+                location.reload();
             },
             error: function () {
                 console.log("Error");
