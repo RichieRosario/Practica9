@@ -153,8 +153,6 @@
         document.getElementById("nombre").value = "";
         document.getElementById("sector").value = "";
         document.getElementById("nivel").selectedIndex = 0;
-        document.getElementById("latitud").value = "";
-        document.getElementById("longitud").value = "";
 
         $("#datoslocal tbody").html(markup);
 
