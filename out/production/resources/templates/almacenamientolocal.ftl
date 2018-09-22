@@ -109,13 +109,8 @@
 
                 $('input[name=latitud]').val(position.coords.latitude);
                 $('input[name=longitud]').val(position.coords.longitude);
-                var latitudes = []
-                var longitudes = []
-                console.log($('input[name=longitud]').val())
-              var marker = new google.maps.Marker({
-                    position: pos,
-                    map: map
-                });
+
+
                 map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -133,6 +128,9 @@
                 'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
     }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAiRGQv-yrkruO0SLtxrlkCnL008nJUHc&callback=initMap">
 </script>
 
 <script>
